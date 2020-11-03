@@ -1,5 +1,6 @@
 package com.jason.framework.utils;
 
+import android.annotation.SuppressLint;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -17,6 +18,7 @@ import java.util.Date;
 
 public class LogUtils {
 
+    @SuppressLint("SimpleDateFormat")
     private static SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 
     public static void i(String text) {
@@ -55,10 +57,10 @@ public class LogUtils {
         }
     }
 
-    public static void writeToFile(String text) {
-        String fileName = "/sdcard/MyChat/MyChat.log";
-        String log = mSimpleDateFormat.format(new Date()) + " " + text;
-        File fileGroup = new File("/sdcard/MyChat/");
+    private static void writeToFile(String text) {
+        @SuppressLint("SdCardPath") String fileName = "/sdcard/MyChat/MyChat.log";
+        String log = mSimpleDateFormat.format(new Date()) + " " + text + "\n";
+        @SuppressLint("SdCardPath") File fileGroup = new File("/sdcard/MyChat/");
         if (!fileGroup.exists()) {
             fileGroup.mkdirs();
         }
