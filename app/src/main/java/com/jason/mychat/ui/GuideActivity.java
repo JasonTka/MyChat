@@ -169,4 +169,10 @@ public class GuideActivity extends BaseUIActivity implements View.OnClickListene
                 break;
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mGuideMusic.stopPlay();
+    }
 }
