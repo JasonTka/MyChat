@@ -33,6 +33,10 @@ public class BmobManager {
         Bmob.initialize(mContext, BMOB_SDK_ID);
     }
 
+    public boolean isLogin(){
+        return BmobUser.isLogin();
+    }
+
     //获取本地对象
     public IMUser getUser() {
         return BmobUser.getCurrentUser(IMUser.class);

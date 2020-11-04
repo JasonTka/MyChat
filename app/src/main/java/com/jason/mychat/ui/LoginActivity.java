@@ -19,6 +19,7 @@ import com.jason.framework.entity.Constants;
 import com.jason.framework.manager.DialogManager;
 import com.jason.framework.utils.SpUtils;
 import com.jason.framework.view.DialogView;
+import com.jason.framework.view.LoadingView;
 import com.jason.framework.view.TouchPictureV;
 import com.jason.mychat.MainActivity;
 import com.jason.mychat.R;
@@ -35,6 +36,8 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
     private Button mBtnLogin;
 
     private TouchPictureV mPictureV;
+
+    private LoadingView mLoadingView;
 
     private static final int H_TIME = 1001;
 
@@ -87,6 +90,9 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
     }
 
     private void initDialogView() {
+
+        mLoadingView=new LoadingView(this);
+
         mCodeView = DialogManager.getInstance().initView(this, R.layout.dialog_code_view);
         mPictureV = mCodeView.findViewById(R.id.mPictureV);
         mPictureV.setViewResultListener(() -> {
@@ -120,10 +126,13 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
             return;
         }
 
+        //显示Loading
+        mLoadingView.show("正在登录...");
         BmobManager.getInstance().signOrLoginByMobilePhone(phone, code, new LogInListener<IMUser>() {
             @Override
             public void done(IMUser imUser, BmobException e) {
                 if (e == null) {
+                    mLoadingView.hide();
                     //登录成功
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     //保存手机号

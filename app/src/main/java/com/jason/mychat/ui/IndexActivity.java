@@ -10,6 +10,7 @@ import android.os.Message;
 import android.text.TextUtils;
 
 import com.jason.framework.base.BaseUIActivity;
+import com.jason.framework.bmob.BmobManager;
 import com.jason.framework.entity.Constants;
 import com.jason.framework.utils.SpUtils;
 import com.jason.mychat.MainActivity;
@@ -51,8 +52,14 @@ public class IndexActivity extends AppCompatActivity {
             //非第一次启动，是否曾登录
             String token = SpUtils.getInstance().getString(Constants.SP_TOKEN, "");
             if (TextUtils.isEmpty(token)) {
-                //没登录，跳转登录页
-                intent.setClass(this, LoginActivity.class);
+                //判断Bmob是否登录
+                if(BmobManager.getInstance().isLogin()){
+                    //跳转主页
+                    intent.setClass(this, MainActivity.class);
+                }else {
+                    //没登录，跳转登录页
+                    intent.setClass(this, LoginActivity.class);
+                }
             } else {
                 //跳转主页
                 intent.setClass(this, MainActivity.class);
