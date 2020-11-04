@@ -1,5 +1,6 @@
 package com.jason.framework.manager;
 
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
@@ -17,7 +18,7 @@ public class MediaPlayerManager {
     public static final int MEDIA_STATUS_PAUSE = 1;
     public static final int MEDIA_STATUS_STOP = 2;
 
-    public static int MEDIA_STATUS = MEDIA_STATUS_STOP;
+    public  int MEDIA_STATUS = MEDIA_STATUS_STOP;
 
     private MediaPlayer mMediaPlayer;
     private static final int H_PROGRESS = 1000;
@@ -51,10 +52,10 @@ public class MediaPlayerManager {
     }
 
     //开始
-    public void startPlay(String path) {
+    public void startPlay(AssetFileDescriptor path) {
         try {
             mMediaPlayer.reset();
-            mMediaPlayer.setDataSource(path);
+            mMediaPlayer.setDataSource(path.getFileDescriptor(), path.getStartOffset(), path.getLength());
             mMediaPlayer.prepare();
             mMediaPlayer.start();
             MEDIA_STATUS = MEDIA_STATUS_PLAY;

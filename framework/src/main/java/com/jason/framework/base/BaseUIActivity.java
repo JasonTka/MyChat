@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jason.framework.utils.SystemUI;
 
-public class BaseUIActivity extends AppCompatActivity {
+public class BaseUIActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
