@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 
+import com.jason.framework.base.BaseUIActivity;
 import com.jason.framework.entity.Constants;
 import com.jason.framework.utils.SpUtils;
 import com.jason.mychat.MainActivity;
@@ -34,6 +35,7 @@ public class IndexActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
+
 
         mHandler.sendEmptyMessageDelayed(SKIP_MAIN, 2 * 1000);
     }

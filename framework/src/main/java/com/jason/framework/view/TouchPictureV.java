@@ -128,19 +128,23 @@ public class TouchPictureV extends View {
                 //防止越界
                 if (event.getX() > 0 && event.getX() < (mWidth - CARD_SIZE)) {
                     moveX = (int) event.getX();
-
-                    //滑动验证
-                    if (moveX > (LINE_W - errorValues) && moveX < (LINE_W + errorValues)) {
-                        if (viewResultListener != null) {
-                            viewResultListener.OnResult();
-                            //重置
-                            moveX = 200;
-                        }
-                    }
                     //更新
                     invalidate();
                 }
                 break;
+
+            case MotionEvent.ACTION_UP:
+                //滑动验证
+                if (moveX > (LINE_W - errorValues) && moveX < (LINE_W + errorValues)) {
+                    if (viewResultListener != null) {
+                        viewResultListener.OnResult();
+                        //重置
+                        moveX = 200;
+                    }
+                }
+                invalidate();
+                break;
+
         }
 
         return true;

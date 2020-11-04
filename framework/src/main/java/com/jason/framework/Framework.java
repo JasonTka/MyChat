@@ -1,5 +1,10 @@
 package com.jason.framework;
 
+import android.content.Context;
+
+import com.jason.framework.bmob.BmobManager;
+import com.jason.framework.utils.SpUtils;
+
 public class Framework {
 
     private volatile static Framework mFramework;
@@ -17,5 +22,10 @@ public class Framework {
             }
         }
         return mFramework;
+    }
+
+    public void initFramework(Context mContext) {
+        SpUtils.getInstance().initSp(mContext);
+        BmobManager.getInstance().initBmob(mContext);
     }
 }

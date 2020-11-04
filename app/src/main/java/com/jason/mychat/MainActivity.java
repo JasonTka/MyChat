@@ -17,6 +17,5 @@ public class MainActivity extends BaseUIActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
     }
 }
