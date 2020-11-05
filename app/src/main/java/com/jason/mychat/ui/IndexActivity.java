@@ -68,4 +68,6 @@ public class IndexActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+
 }

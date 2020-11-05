@@ -27,10 +27,12 @@
         </activity>
 
         <!--引导页-->
-        <activity android:name=".ui.GuideActivity" />
+        <activity android:name=".ui.GuideActivity"
+            android:theme="@style/AppThemeFull"/>
 
         <!--登录页-->
-        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <!--主页-->
         <activity
